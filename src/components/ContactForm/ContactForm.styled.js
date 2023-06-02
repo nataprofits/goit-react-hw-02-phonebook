@@ -9,9 +9,10 @@ display: flex;
   background-color: rgba(255, 115, 0, 0.1);
   border: 2px solid rgba(255, 115, 0, 0.8);
   border-radius: 10px;
-  width: 200px;
+  width: 300px;
   padding: 10px;
-  margin-right: 20px;
+  margin-right: avto;
+  margin-left: avto;
   height: fit-content;
   gap: 20px;
 `;
@@ -25,7 +26,7 @@ font-size: 20px;
 export const Input = styled.input`
 padding: 5px 10px;
   margin-top: 5px;
-  width: 100%;
+  width: 200px;
   cursor: text;
   border: 1px solid rgba(255, 115, 0, 0.8);
   border-radius: 5px;
@@ -34,16 +35,14 @@ font-size: 16px;
 export const ButtonAddDeleteContact = styled.button`
 width: 100%;
 height: 40px;
-color: rgba(255, 115, 0, 0.6);
+color: black;
 background: none;
 border: 2px solid rgba(255, 115, 0, 0.8);
 border-radius: 10px;
-transition: border-color var(--animation), background var(--animation),
-  color var(--animation);
-
 &:hover,
 &:focus {
-  color: rgb(255, 115, 0);
+  color: black;
+  font-weight: bold;
   background: rgba(242, 255, 0, 0.1);
   border-color: rgba(242, 255, 0, 0.8);
 }

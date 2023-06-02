@@ -1,23 +1,31 @@
-import {Contacts } from "components/Contacts/Contacts"
-import PropTypes from 'prop-types';
-import { ContactsList } from "./ContactList.styled";
+import PropTypes  from "prop-types";
+import { List, Item, Name, Button } from "./ContactList.styled"
 
-export const ContactList = ({filteredContacts, onDelete}) => {
-    return (
-        <ContactsList>
-      {filteredContacts.map((contact) => (
-        <Contacts key={contact.id} contact={contact} onDelete={onDelete} />
-      ))}
-    </ContactsList>
-    )
+export function ContactList({ findContacts, onDeleteContact }) {
+  return (
+    <List>
+      {findContacts
+        .sort((firstContact, secondContact) =>
+          firstContact.name.localeCompare(secondContact.name)
+        )
+        .map(findContact => (
+          <Item key={findContact.id}>
+            <Name>
+              {findContact.name}: {findContact.number}
+            </Name>
+            <Button 
+              onClick={() => onDeleteContact(findContact.id)}
+              type="button"
+            >
+              Delete
+            </Button>
+          </Item>
+        ))}
+    </List>
+  );
 }
+
 ContactList.propTypes = {
-  filteredContacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired
-    })
-  ).isRequired,
-  onDelete:PropTypes.func.isRequired
+  findContacts: PropTypes.arrayOf(PropTypes.object),
+  onDeleteContact: PropTypes.func,
 };
